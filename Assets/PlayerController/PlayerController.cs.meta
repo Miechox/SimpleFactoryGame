@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: bd6a16285cf04cd4ba490d55f3bbd464
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - cam: {instanceID: 0}
+  - buildingPrefab: {fileID: 7867540957316829422, guid: c4935fe53167e8d4c95cefac01ef0f9f, type: 3}
+  - smallFactoryPrefab: {instanceID: 0}
+  - bigFactoryPrefab: {instanceID: 0}
+  - minePrefab: {instanceID: 0}
+  - storagePrefab: {instanceID: 0}
+  - playerUI: {instanceID: 0}
+  - hubScript: {instanceID: 0}
+  - prefabTerrain: {fileID: 7509699638988927796, guid: 4d9cb5dd0899bab4e8c7c4af15299f67, type: 3}
+  - TreePrefab: {fileID: 7815117264540520973, guid: 5a6ca90dde7a6884ea6f1a5823aaa388, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
