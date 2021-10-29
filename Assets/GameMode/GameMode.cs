@@ -31,7 +31,7 @@ public class GameMode : MonoBehaviour
     {
         mineElctricityUsage = 10;
         generatorElectricityGenerated = 30;
-        goldVal = 200;
+        goldVal = 350;
         gaseVal = 0;
     }
 
@@ -80,6 +80,7 @@ public class GameMode : MonoBehaviour
                 {
                     mine.mineSpeed -= 0.2f;
                     mineElctricityUsage += 5;
+                    break;
                 }
             }
         }
