@@ -13,13 +13,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private LayerMask mine;
     [SerializeField]
-    private LayerMask Hub;
+    private LayerMask hub;
     [SerializeField]
     private LayerMask pole;
     [SerializeField]
     private LayerMask generator;
     [SerializeField]
     private LayerMask upgradeCenter;
+    private LayerMask[] layerList = new LayerMask[5];
 
     [SerializeField]
     GameObject ElectricPole;
@@ -40,6 +41,7 @@ public class PlayerController : MonoBehaviour
     private Canvas generatorUI;
     [SerializeField]
     private Canvas UpgradeUI;
+    private Canvas[] canvList = new Canvas[5];
     GameObject clicked;
 
     public Vector3 hubPosition;
@@ -53,11 +55,8 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        hubUI.enabled = false;
-        generatorUI.enabled = false;
-        poleUI.enabled = false;
-        mineUI.enabled = false;
-        UpgradeUI.enabled = false;
+        SetUpCanvasList();
+        SetUpLayerMaskList();
         gameMode = FindObjectOfType<GameMode>().GetComponent<GameMode>();
     }
 
@@ -92,22 +91,45 @@ public class PlayerController : MonoBehaviour
         {
             if (terrein == grid.gridInfo[i].gridPoints && !grid.gridInfo[i].occupiedBy)
             {
-                grid.gridInfo[i].occupiedBy = obj;
-                this.heldObject = null;
                 if (obj.GetComponent<ElectricPole>())
-                    obj.GetComponent<ElectricPole>().SetElectricField();
-                else if (obj.GetComponent<Generator>())
-                    obj.GetComponent<Generator>().GeneratorSetup();
-                else if (obj.GetComponent<MineScript>())
                 {
-                    obj.GetComponent<MineScript>().FindeResource();
-                    obj.GetComponent<MineScript>().EnergySum();
+                    obj.GetComponent<ElectricPole>().SetElectricField();
+                    HeldObjectReset(i, obj);
+                }
+                else if (obj.GetComponent<Generator>())
+                {
+                    obj.GetComponent<Generator>().GeneratorSetup();
+                    HeldObjectReset(i, obj);
                 }  
+                else if(obj.GetComponent<UpCenter>())
+                {
+                    HeldObjectReset(i, obj);
+                }
+            }
+            else if(terrein == grid.gridInfo[i].gridPoints && grid.gridInfo[i].occupiedBy.GetComponent<ResourcesScript>())
+            {
+                if (obj.GetComponent<MineScript>())
+                {
+                    MineScript temp = obj.GetComponent<MineScript>();
+                    temp.FindResource(i);
+                    temp.EnergySum();
+                    if(gameMode.mineList.Count>0)
+                    {
+                        temp.mineSpeed = gameMode.mineList[0].mineSpeed;
+                        temp.miningAmount = gameMode.mineList[0].miningAmount;
+                    }
+                    HeldObjectReset(i,obj);
+                }
             }
         }
     }
+    private void HeldObjectReset(int i,GameObject obj)
+    {
+        grid.gridInfo[i].occupiedBy = obj;
+        this.heldObject = null;
+    }
 
-    public void SpawUpgradeCenterInWorld()
+    public void SpawnUpgradeCenterInWorld()
     {
         if (heldObject == null && gameMode.goldVal >= 130 && !FindObjectOfType<UpCenter>())
         {
@@ -121,6 +143,7 @@ public class PlayerController : MonoBehaviour
         {
             gameMode.goldVal -= 30;
             heldObject = Instantiate(MinePrefab, new Vector3(20, 0, 20), Quaternion.identity);
+
         }   
     }
     public void SpawnElectricPoleInWorld()
@@ -140,69 +163,70 @@ public class PlayerController : MonoBehaviour
         }   
     }
 
+    private void SetUpCanvasList()
+    {
+        canvList[0] = hubUI;
+        canvList[1] = generatorUI;
+        canvList[2] = poleUI;
+        canvList[3] = mineUI;
+        canvList[4] = UpgradeUI;
+        foreach (Canvas can in canvList)
+        {
+            can.enabled = false;
+        }
+    }
+    private void SetUpLayerMaskList()
+    {
+        layerList[0] = hub;
+        layerList[1] = generator;
+        layerList[2] = pole;
+        layerList[3] = mine;
+        layerList[4] = upgradeCenter;
+    }
+    private void MakeAllCanvasDisappear()
+    {
+        foreach (Canvas can in canvList)
+        {
+            can.enabled = false;
+        }
+    }
+    private void TurnOnOffUI(int index,Collider hit)
+    {
+        clicked = hit.gameObject;
+        MakeAllCanvasDisappear();
+        canvList[index].enabled = true;
+    }
     private void CheckClickedBuilding()
     {
         if (Input.GetMouseButtonUp(0))
         {
             ray = cam.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, Hub))
+            for (int i = 0; i < layerList.Length; i++)
             {
-                clicked = hit.collider.gameObject;
-                hubUI.enabled = true;
-                UpgradeUI.enabled = false;
-                poleUI.enabled = false;
-                mineUI.enabled = false;
-            }
-            else if(Physics.Raycast(ray, out hit, Mathf.Infinity, mine))
-            {
-                clicked = hit.collider.gameObject;
-                mineUI.enabled = true;
-                UpgradeUI.enabled = false;
-                hubUI.enabled = false;
-                generatorUI.enabled = false;
-                poleUI.enabled = false;
-            }   
-            else if(Physics.Raycast(ray, out hit, Mathf.Infinity, generator))
-            {
-                clicked = hit.collider.gameObject;
-                generatorUI.enabled = true;
-                UpgradeUI.enabled = false;
-                poleUI.enabled = false;
-                mineUI.enabled = false;
-                hubUI.enabled = false;
-            }  
-            else if (Physics.Raycast(ray, out hit, Mathf.Infinity, pole))
-            {
-                clicked = hit.collider.gameObject;
-                poleUI.enabled = true;
-                UpgradeUI.enabled = false;
-                generatorUI.enabled = false;
-                mineUI.enabled = false;
-                hubUI.enabled = false;
-            }
-            else if (Physics.Raycast(ray, out hit, Mathf.Infinity, upgradeCenter))
-            {
-                clicked = hit.collider.gameObject;
-                UpgradeUI.enabled = true;
-                generatorUI.enabled = false;
-                poleUI.enabled = false;
-                mineUI.enabled = false;
-                hubUI.enabled = false;
-            }
-            else
-            {
-                hubUI.enabled = false;
-                generatorUI.enabled = false;
-                poleUI.enabled = false;
-                mineUI.enabled = false;
-                UpgradeUI.enabled = false;
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerList[i]))
+                {
+                    TurnOnOffUI(i, hit.collider);
+                    break;
+                }
+                else
+                    MakeAllCanvasDisappear();
             }
         }
     }
+
     public void DestroyObj()
     {
         if(clicked)
         {
+            Destroy(clicked);
+        }
+    }
+    public void DestroyPoleObj()
+    {
+        if (clicked)
+        {
+            ElectricPole temp = clicked.GetComponent<ElectricPole>();
+            temp.DestroyElcetricField();
             Destroy(clicked);
         }
     }

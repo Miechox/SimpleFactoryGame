@@ -13,7 +13,8 @@ public class GameMode : MonoBehaviour
 
     public float electricityMax { get; set; }//1
     public float electricityUsed { get; set; }//2
-    public int treesVal { get; set; }//3
+
+    //public int treesVal { get; set; }//3
     public int goldVal { get; set; }//4
     public int gaseVal { get; set; }//5
 
@@ -30,7 +31,8 @@ public class GameMode : MonoBehaviour
     {
         mineElctricityUsage = 10;
         generatorElectricityGenerated = 30;
-        goldVal = 200000;
+        goldVal = 200;
+        gaseVal = 0;
     }
 
     
@@ -40,11 +42,10 @@ public class GameMode : MonoBehaviour
         EnergyCheck();
     }
 
-    private void UpdateResourcesUI()
+    public void UpdateResourcesUI()
     {
         playerResourceUI[0].text = $"Uisng: {electricityUsed}";
         playerResourceUI[1].text = $"Max ele: {electricityMax}";
-        playerResourceUI[2].text = $"Trees: {treesVal}";
         playerResourceUI[3].text = $"Gold: {goldVal}";
         playerResourceUI[4].text = $"Gase: {gaseVal}";
     }
@@ -61,29 +62,33 @@ public class GameMode : MonoBehaviour
 
     public void GeneratorUpgrade()
     {
-        if(goldVal>=900)
+        if(gaseVal >= 900)
         {
             generatorElectricityGenerated += 5;
-            goldVal -= 900;
+            gaseVal -= 900;
             electricityMax = generatorsList.Count * generatorElectricityGenerated;
         }
     }
     public void MineSpeedUpgrade()
     {
-        if(goldVal>=1500)
+        if(gaseVal >= 1500)
         {
-            goldVal -= 1500;
+            gaseVal -= 1500;
             foreach (MineScript mine in mineList)
             {
-                mine.mineSpeed -= 0.5f;
+                if(mine.mineSpeed >=0.2)
+                {
+                    mine.mineSpeed -= 0.2f;
+                    mineElctricityUsage += 5;
+                }
             }
         }
     }
     public void MiningAmountUpgrade()
     {
-        if(goldVal>=1000)
+        if(gaseVal>=1000)
         {
-            goldVal -= 1000;
+            gaseVal -= 1000;
             foreach (MineScript mine in mineList)
             {
                 mine.miningAmount += 5;

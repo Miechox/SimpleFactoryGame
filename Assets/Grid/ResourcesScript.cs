@@ -9,7 +9,7 @@ public class ResourcesScript : MonoBehaviour
 
     private void Awake()
     {
-        this.resourceAmount = 300;
+        this.resourceAmount = 3000;
     }
     private void Update()
     {

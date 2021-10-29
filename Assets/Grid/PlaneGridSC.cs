@@ -10,8 +10,11 @@ public class PlaneGridSC : MonoBehaviour
     [SerializeField]
     private Material electricMat;
 
-    public bool isElectrik = false;
+    public ResourcesScript ocupiedByRes { set; get; }
 
+    public bool isElectric = false;
+
+ 
     public void SetPlaneTextrureToYellow()
     {
         Renderer renderer = GetComponent<Renderer>();

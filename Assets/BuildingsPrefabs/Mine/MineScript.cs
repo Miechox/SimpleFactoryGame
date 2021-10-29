@@ -14,6 +14,7 @@ public class MineScript : MonoBehaviour
     public int miningAmount { get; set; }
     public float mineSpeed { get; set; }
     bool isMining=false;
+    public int coord { get; set; }
     
     void Start()
     {
@@ -22,44 +23,35 @@ public class MineScript : MonoBehaviour
         grid = mapGenerator.grid;
         mineSpeed = 5f;
         miningAmount = 10;
+        
     }
 
     void Update()
     {
-        if (!isMining&&isEnergy()&&mapGenerator.planeGrid[(int)(transform.position.x*100)+ (int)transform.position.z].isElectrik)
+        if (!isMining && isEnergy())
         {
             isMining = true;
             StartCoroutine(MineCooldown());
         }
     }
-    public void FindeResource()
+    public void FindResource(int resourceCoord)
     {
-        for (int x = (int)transform.position.x - 1; x < (int)transform.position.x + 2; x++)
+        coord = resourceCoord;
+        if(grid.gridInfo[resourceCoord].occupiedBy.name == "Gold(Clone)")
         {
-            for (int y = (int)transform.position.z + 1; y > (int)transform.position.z - 2; y--)
-            {
-                int tempCoord = (x * 100) + y;
-                
-                if(grid.gridInfo[tempCoord].occupiedBy)
-                {
-                    if(grid.gridInfo[tempCoord].occupiedBy.name == "Gold(Clone)")
-                    {
-                        resource = grid.gridInfo[tempCoord].occupiedBy.GetComponent<ResourcesScript>();
-                    }
-                    if (grid.gridInfo[tempCoord].occupiedBy.name == "Gase(Clone)")
-                    {
-                        resource = grid.gridInfo[tempCoord].occupiedBy.GetComponent<ResourcesScript>();
-                    }
-                }
-            }
+            resource = grid.gridInfo[resourceCoord].occupiedBy.GetComponent<ResourcesScript>();
+        }
+        if (grid.gridInfo[resourceCoord].occupiedBy.name == "Gase(Clone)")
+        {
+            resource = grid.gridInfo[resourceCoord].occupiedBy.GetComponent<ResourcesScript>();
         }
     }
     public bool isEnergy()
     {
-        if(gameMode.electricityUsed>gameMode.electricityMax)
-            return false;
-        else       
-            return true;       
+        if(gameMode.electricityUsed<=gameMode.electricityMax && mapGenerator.planeGrid[coord].isElectric)
+            return true;
+        else
+            return false;       
     }
     public void EnergySum()
     {

@@ -46,7 +46,7 @@ public class MapGenerator : MonoBehaviour
     {
         RenderBasicTerrain();
         WorldHubPlacement();
-        WorldObstPlacement();
+        WorldObstaclePlacement();
     }
     private void RenderBasicTerrain()
     {
@@ -62,7 +62,7 @@ public class MapGenerator : MonoBehaviour
         hubPosition = grid.gridInfo[5050].gridPoints;
         grid.gridInfo[5050].occupiedBy = Instantiate(HubPrefab, hubPosition, Quaternion.identity);
     }
-    private void WorldObstPlacement()
+    private void WorldObstaclePlacement()
     {
         for (int x = 0; x < 100; x++)
         {

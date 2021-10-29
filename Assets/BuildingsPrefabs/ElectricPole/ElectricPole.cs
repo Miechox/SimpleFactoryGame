@@ -24,25 +24,24 @@ public class ElectricPole : MonoBehaviour
             {
                 grid.gridInfo[CalculateCoord(x, y)].isElectricity = true;
                 mapGenerator.planeGrid[CalculateCoord(x, y)].SetPlaneTextrureToYellow();
-                mapGenerator.planeGrid[CalculateCoord(x, y)].isElectrik = true;
+                mapGenerator.planeGrid[CalculateCoord(x, y)].isElectric = true;
             }
         }
     }
-    private void DestroyElcetricField()
+    public void DestroyElcetricField()
     {
         for (int x = (int)transform.position.x - 2; x < (int)transform.position.x + 3; x++)
         {
             for (int y = (int)transform.position.z + 2; y > (int)transform.position.z - 3; y--)
             {
                 grid.gridInfo[CalculateCoord(x, y)].isElectricity = false;
-                mapGenerator.planeGrid[CalculateCoord(x, y)].isElectrik = false;
+                mapGenerator.planeGrid[CalculateCoord(x, y)].isElectric = false;
                 mapGenerator.planeGrid[CalculateCoord(x, y)].SetMaterialToOriginal();
             }
         }
     }
     private void OnDestroy()
     {
-        DestroyElcetricField();
         gameMode.goldVal += 20;
     }
 
