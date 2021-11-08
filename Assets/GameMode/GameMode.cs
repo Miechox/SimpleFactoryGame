@@ -38,9 +38,13 @@ public class GameMode : MonoBehaviour
     
     void Update()
     {
-        UpdateResourcesUI();
         EnergyCheck();
     }
+    private void LateUpdate()
+    {
+        UpdateResourcesUI();
+    }
+
 
     public void UpdateResourcesUI()
     {
@@ -79,10 +83,9 @@ public class GameMode : MonoBehaviour
                 if(mine.mineSpeed >=0.2)
                 {
                     mine.mineSpeed -= 0.2f;
-                    mineElctricityUsage += 5;
-                    break;
                 }
             }
+            mineElctricityUsage += 5;
         }
     }
     public void MiningAmountUpgrade()
@@ -96,6 +99,5 @@ public class GameMode : MonoBehaviour
             }
         }
     }
-
 
 }

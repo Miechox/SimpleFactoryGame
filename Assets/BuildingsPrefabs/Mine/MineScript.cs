@@ -22,8 +22,7 @@ public class MineScript : MonoBehaviour
         gameMode = FindObjectOfType<GameMode>().GetComponent<GameMode>();
         grid = mapGenerator.grid;
         mineSpeed = 5f;
-        miningAmount = 10;
-        
+        miningAmount = 10;  
     }
 
     void Update()
@@ -48,10 +47,7 @@ public class MineScript : MonoBehaviour
     }
     public bool isEnergy()
     {
-        if(gameMode.electricityUsed<=gameMode.electricityMax && mapGenerator.planeGrid[coord].isElectric)
-            return true;
-        else
-            return false;       
+        return gameMode.electricityUsed <= gameMode.electricityMax && mapGenerator.planeGrid[coord].isElectric;   
     }
     public void EnergySum()
     {

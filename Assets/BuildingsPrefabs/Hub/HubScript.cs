@@ -5,16 +5,10 @@ using UnityEngine.UI;
 
 public class HubScript : MonoBehaviour
 {
-    private PlayerController playerController;
-
-    private void Awake()
+    PlayerController plContr;
+    private void Start()
     {
-        playerController = FindObjectOfType<PlayerController>().GetComponent<PlayerController>();
-        playerController.hubScript = this;
+        plContr = FindObjectOfType<PlayerController>().GetComponent<PlayerController>();
+        plContr.hubScript = this;
     }
-    private void Update()
-    {
-       
-    }
-  
 }

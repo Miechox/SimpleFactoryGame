@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class ElectricPole : MonoBehaviour
 {
     private GridPrototype grid;
     private MapGenerator mapGenerator;
     private GameMode gameMode;
     
-
+    
     private void Start()
     {
         grid = FindObjectOfType<MapGenerator>().GetComponent<MapGenerator>().grid;

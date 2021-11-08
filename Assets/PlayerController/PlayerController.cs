@@ -44,13 +44,13 @@ public class PlayerController : MonoBehaviour
     private Canvas[] canvList = new Canvas[5];
     GameObject clicked;
 
-    public Vector3 hubPosition;
     public HubScript hubScript;
-
     GameObject heldObject;
    
     public GridPrototype grid;
     private GameMode gameMode;
+
+    CameraMovement camMove;
   
 
     void Start()
@@ -58,6 +58,7 @@ public class PlayerController : MonoBehaviour
         SetUpCanvasList();
         SetUpLayerMaskList();
         gameMode = FindObjectOfType<GameMode>().GetComponent<GameMode>();
+        camMove = FindObjectOfType<CameraMovement>().GetComponent<CameraMovement>();
     }
 
     private void Update()
@@ -66,6 +67,7 @@ public class PlayerController : MonoBehaviour
             HoldObjOnMouse(heldObject);
 
         CheckClickedBuilding();
+        SetCameraToHub();
     }
 
 
@@ -85,6 +87,14 @@ public class PlayerController : MonoBehaviour
         }
         
     }
+    /*private bool something(GameObject obj,out ElectricPole temp)
+    {
+        temp = obj.GetComponent<ElectricPole>();
+        return temp != null;
+    }*/
+    //electricPole.SetElectricField();
+    //something(obj,out var electricPole)
+  
     private void SetPointToStay(GameObject obj,Vector3 terrein)
     {
         for (int i = 0; i < grid.gridInfo.Count; i++)
@@ -151,7 +161,7 @@ public class PlayerController : MonoBehaviour
         if (heldObject == null && gameMode.goldVal >= 50)
         {
             gameMode.goldVal -= 50;
-            heldObject = Instantiate(ElectricPole, new Vector3(20, 0, 20), Quaternion.identity);
+            heldObject = Instantiate(ElectricPole, new Vector3(20, 0, 20),Quaternion.identity);
         }   
     }
     public void SpawnGeneratorInWorld()
@@ -190,7 +200,7 @@ public class PlayerController : MonoBehaviour
             can.enabled = false;
         }
     }
-    private void TurnOnOffUI(int index,Collider hit)
+    private void ToggleUI(int index,Collider hit)
     {
         clicked = hit.gameObject;
         MakeAllCanvasDisappear();
@@ -205,7 +215,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerList[i]))
                 {
-                    TurnOnOffUI(i, hit.collider);
+                    ToggleUI(i, hit.collider);
                     break;
                 }
                 else
@@ -214,6 +224,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void SetCameraToHub()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            camMove.camPosition = new Vector3(hubScript.transform.position.x,
+                                              camMove.camPosition.y,
+                                              hubScript.transform.position.z - 6
+                                              );
+        }
+    }
     public void DestroyObj()
     {
         if(clicked)
