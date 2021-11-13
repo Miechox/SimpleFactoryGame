@@ -16,6 +16,30 @@ mapa może mieć tylko wielkość
 100 x 100 inaczej kod nie będzie
 użyteczny.
 
+
+I właśnie wsztkie podstawowe obiekty takie jak drzewa i 2 rodzaje surowców są
+wstawiane na mape w załeżności od wartości koloru miedzy 0 a 1 który jest wyciągany
+z wcześnmiej wygenerowanej textury perlin noisa
+```csharp
+ private void WorldObstaclePlacement()
+    {
+        for (int x = 0; x < 100; x++)
+        {
+            for (int y = 0; y < 100; y++)
+            {
+                float perlVal = heightMap.texture.GetPixel(x, y).grayscale;
+
+                if (perlVal > 0 && perlVal < 0.33f)
+                    LocationForObj(TreePrefab, x, y,true);
+                else if (perlVal > 0.47 && perlVal < 0.48)
+                    LocationForObj(GasePrefab, x, y,false);
+                else if (perlVal > 0.78 && perlVal < 0.80)
+                    LocationForObj(GoldPrefab, x, y,false);
+            }
+        }
+    }
+```
+
 ## Inputy Gracza
 
 Żeby gracz miał wizualizacje tego gdzie stawia obiekt
