@@ -1,2 +1,3 @@
-# SimpleFactoryGame
+# Simple Factory Game Prototype
+
  
