@@ -17,8 +17,9 @@ mapa może mieć tylko wielkość
 użyteczny.
 
 
-I właśnie wsztkie podstawowe obiekty takie jak drzewa i 2 rodzaje surowców są
-wstawiane na mape w załeżności od wartości koloru miedzy 0 a 1 który jest wyciągany
+I właśnie wsztkie podstawowe obiekty takie jak drzewa i dwa rodzaje surowców są
+wstawiane na mape w załeżności od wartości koloru miedzy 
+0f a 1f który jest wyciągany
 z wcześnmiej wygenerowanej textury perlin noisa
 ```csharp
  private void WorldObstaclePlacement()
