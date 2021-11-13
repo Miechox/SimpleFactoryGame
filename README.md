@@ -21,7 +21,7 @@ użyteczny.
 pod lokacją jego kursora jest tworzony obiekt który 
 spnauję sie do griada plus podąrza za myszką
 
-```ccharp
+```csharp
 private void HoldObjOnMouse(GameObject obj)
 {
     ray = cam.ScreenPointToRay(Input.mousePosition);
