@@ -5,7 +5,7 @@ ale aby projekt można było ciekawiej rozbudować warto byłoby zmienić parę
 rzeczy w kodzie.
 ## Mapa
 Cala mapa jest generowana na bazie Perlin noisa który jest tworzony na nowo
-za każdym kolejnym właczeniem gry
+za każdym kolejnym właczeniem gry.
 
 
 
@@ -18,8 +18,7 @@ użyteczny.
 
 
 Żeby gracz miał wizualizacje tego gdzie stawia obiekt
-pod lokacją jego kursora jest tworzony obiekt który 
-spnauję sie do griada plus podąrza za myszką
+pod lokacją jego kursora jest snapowany 
 
 ```csharp
 private void HoldObjOnMouse(GameObject obj)
