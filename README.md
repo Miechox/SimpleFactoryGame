@@ -16,7 +16,7 @@ mapa może mieć tylko wielkość
 100 x 100 inaczej kod nie będzie
 użyteczny.
 
-
+## Inputy Gracza
 
 Żeby gracz miał wizualizacje tego gdzie stawia obiekt
 pod lokacją jego kursora jest snapowany 
@@ -41,7 +41,9 @@ private void HoldObjOnMouse(GameObject obj)
 
 Gracz zanim będzie stawiać obiekt musi wybrac jaki chce
 postawić a robi to poprzez guziki w UI do których 
-są przypięte funkcje tego typu.
+są przypięte funkcje tego typu.W karzdej takiej 
+funkcji program sprawdza ile gracz ma danej waluty
+i czy już czegoś nie "trzyma".
 
 ```csharp
 public void SpawnMineInWorld()
@@ -54,6 +56,8 @@ public void SpawnMineInWorld()
     }
 }
 ```
+
+
 
 
 
