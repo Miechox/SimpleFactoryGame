@@ -20,7 +20,7 @@ użyteczny.
 I właśnie wsztkie podstawowe obiekty takie jak drzewa i dwa rodzaje surowców są
 wstawiane na mape w załeżności od wartości koloru miedzy 
 0f a 1f który jest wyciągany
-z wcześnmiej wygenerowanej textury perlin noisa
+z wcześniej wygenerowanej textury perlin noisa
 ```csharp
  private void WorldObstaclePlacement()
     {
@@ -66,7 +66,7 @@ private void HoldObjOnMouse(GameObject obj)
 
 Gracz zanim będzie stawiać obiekt musi wybrac jaki chce
 postawić a robi to poprzez guziki w UI do których 
-są przypięte funkcje tego typu.W karzdej takiej 
+są przypięte funkcje tego typu. W karzdej takiej 
 funkcji program sprawdza ile gracz ma danej waluty
 i czy już czegoś nie "trzyma".
 
@@ -81,6 +81,8 @@ public void SpawnMineInWorld()
     }
 }
 ```
+
+
 
 
 
