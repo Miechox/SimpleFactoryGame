@@ -12,7 +12,8 @@ za każdym kolejnym właczeniem gry.
 System gridu do którego się przyczepiają obiekty na mapie jest tworzony
 za pomocą zwykłych plane'ów które maja swoje własne skrypty.
 Aktualnie jest to bardzo ogrnaiczony grid system ponieważ
-mapa może mieć tylko wielkość 100 x 100 inaczej kod nie będzie
+mapa może mieć tylko wielkość 
+100 x 100 inaczej kod nie będzie
 użyteczny.
 
 
