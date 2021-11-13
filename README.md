@@ -39,9 +39,21 @@ private void HoldObjOnMouse(GameObject obj)
 }
 ```
 
-Funkcja sprawdzająca czy dany blok jest zajęty wykorzystuję
-Raycast dzięki któremu dostaje się do skryptu danego miejsca
-i patrzy na bool określająćy stan zajęcia.
+Gracz zanim będzie stawiać obiekt musi wybrac jaki chce
+postawić a robi to poprzez guziki w UI do których 
+są przypięte funkcje tego typu.
+
+```csharp
+public void SpawnMineInWorld()
+{
+    if (heldObject == null && gameMode.goldVal >= 30)
+    {
+        gameMode.goldVal -= 30;
+        heldObject = Instantiate(MinePrefab, new Vector3(20, 0, 20), Quaternion.identity);
+
+    }
+}
+```
 
 
 
