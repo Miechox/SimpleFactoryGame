@@ -63,6 +63,12 @@ private void HoldObjOnMouse(GameObject obj)
     }
 }
 ```
+Jak widać w kodzie powyżej jeżeli gracz zdecyduję się postawić obiekt
+sprawdzamy czy ten punkt jest pusty do czego potrzbujemy informajci wejścowych
+
+```csharp
+private void SetPointToStay(GameObject heldObject, Vector3 planePosition);
+```
 
 Gracz zanim będzie stawiać obiekt musi wybrac jaki chce
 postawić a robi to poprzez guziki w UI do których 
