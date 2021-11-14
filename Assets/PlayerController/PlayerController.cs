@@ -85,42 +85,33 @@ public class PlayerController : MonoBehaviour
                 heldObject = null;
             }
         }
-        
     }
-    /*private bool something(GameObject obj,out ElectricPole temp)
-    {
-        temp = obj.GetComponent<ElectricPole>();
-        return temp != null;
-    }*/
-    //electricPole.SetElectricField();
-    //something(obj,out var electricPole)
-  
-    private void SetPointToStay(GameObject obj,Vector3 terrein)
+    private void SetPointToStay(GameObject heldObject,Vector3 planePosition)
     {
         for (int i = 0; i < grid.gridInfo.Count; i++)
         {
-            if (terrein == grid.gridInfo[i].gridPoints && !grid.gridInfo[i].occupiedBy)
+            if (planePosition == grid.gridInfo[i].gridPoints && !grid.gridInfo[i].occupiedBy)
             {
-                if (obj.GetComponent<ElectricPole>())
+                if (heldObject.GetComponent<ElectricPole>())
                 {
-                    obj.GetComponent<ElectricPole>().SetElectricField();
-                    HeldObjectReset(i, obj);
+                    heldObject.GetComponent<ElectricPole>().SetElectricField();
+                    HeldObjectReset(i, heldObject);
                 }
-                else if (obj.GetComponent<Generator>())
+                else if (heldObject.GetComponent<Generator>())
                 {
-                    obj.GetComponent<Generator>().GeneratorSetup();
-                    HeldObjectReset(i, obj);
+                    heldObject.GetComponent<Generator>().GeneratorSetup();
+                    HeldObjectReset(i, heldObject);
                 }  
-                else if(obj.GetComponent<UpCenter>())
+                else if(heldObject.GetComponent<UpCenter>())
                 {
-                    HeldObjectReset(i, obj);
+                    HeldObjectReset(i, heldObject);
                 }
             }
-            else if(terrein == grid.gridInfo[i].gridPoints && grid.gridInfo[i].occupiedBy.GetComponent<ResourcesScript>())
+            else if(planePosition == grid.gridInfo[i].gridPoints && grid.gridInfo[i].occupiedBy.GetComponent<ResourcesScript>())
             {
-                if (obj.GetComponent<MineScript>())
+                if (heldObject.GetComponent<MineScript>())
                 {
-                    MineScript temp = obj.GetComponent<MineScript>();
+                    MineScript temp = heldObject.GetComponent<MineScript>();
                     temp.FindResource(i);
                     temp.EnergySum();
                     if(gameMode.mineList.Count>0)
@@ -128,7 +119,7 @@ public class PlayerController : MonoBehaviour
                         temp.mineSpeed = gameMode.mineList[0].mineSpeed;
                         temp.miningAmount = gameMode.mineList[0].miningAmount;
                     }
-                    HeldObjectReset(i,obj);
+                    HeldObjectReset(i,heldObject);
                 }
             }
         }
@@ -251,3 +242,4 @@ public class PlayerController : MonoBehaviour
         }
     }
 }
+
