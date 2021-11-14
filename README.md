@@ -5,7 +5,7 @@ ale aby projekt można było ciekawiej rozbudować warto byłoby zmienić parę
 rzeczy w kodzie.
 ## Mapa
 Cala mapa jest generowana na bazie Perlin noisa który jest tworzony na nowo
-za każdym kolejnym właczeniem gry.
+za każdym kolejnym włączeniem gry.
 
 ![](GitImage/MapGenIMage.PNG)
 ![](GitImage/MapGenIMageV3.PNG)
@@ -13,14 +13,14 @@ za każdym kolejnym właczeniem gry.
 
 System gridu do którego się przyczepiają obiekty na mapie jest tworzony
 za pomocą zwykłych plane'ów które maja swoje własne skrypty.
-Aktualnie jest to bardzo ogrnaiczony grid system ponieważ
+Aktualnie jest to bardzo ograniczony grid system ponieważ
 mapa może mieć tylko wielkość 
 100 x 100 inaczej kod nie będzie
 użyteczny.
 
 
-I właśnie wsztkie podstawowe obiekty takie jak drzewa i dwa rodzaje surowców są
-wstawiane na mape w załeżności od wartości koloru miedzy 
+I właśnie wszystkie podstawowe obiekty takie jak drzewa i dwa rodzaje surowców są
+wstawiane na mapę w zależności od wartości koloru miedzy 
 0f a 1f który jest wyciągany
 z wcześniej wygenerowanej textury perlin noisa
 ```csharp
@@ -66,18 +66,18 @@ private void HoldObjOnMouse(GameObject obj)
 }
 ```
 Jak widać w kodzie powyżej jeżeli gracz zdecyduję się postawić obiekt
-sprawdzamy czy ten punkt jest pusty do czego potrzbujemy informajci wejścowych.
-Wykorzysuje je poniższa funkcja która sprawdza jaki obiekt jest trzymany
+sprawdzamy czy ten punkt jest pusty do czego potrzebujemy informacji wejściowych.
+Wykorzystuje je poniższa funkcja która sprawdza jaki obiekt jest trzymany
 i odpowiednio do tego wykonuję dane czynności zaczynające się gdy obiekt jest
-kładzony
+kładziony.
 
 ```csharp
 private void SetPointToStay(GameObject heldObject, Vector3 planePosition);
 ```
 
-Gracz zanim będzie stawiać obiekt musi wybrac jaki chce
+Gracz zanim będzie stawiać obiekt musi wybrać jaki chce
 postawić a robi to poprzez guziki w UI do których 
-są przypięte funkcje tego typu. W karzdej takiej 
+są przypięte funkcje tego typu. W każdej takiej 
 funkcji program sprawdza ile gracz ma danej waluty
 i czy już czegoś nie "trzyma".
 
@@ -93,9 +93,9 @@ public void SpawnMineInWorld()
 }
 ```
 ## Podsumowanie 
-Jest to mój pierwszy "większy" projekt w Uinty i raczej bardzo dużo rzeczy bym teraz poprawił,zmienił
-lub inaczej zaprojektował , ale dzięki pracy przy tym projekcie napewno nauczyłem się sporej ilości rzeczy 
-na temat zasady dzialania kodu w unity i samego programu.
+Jest to mój pierwszy "większy" projekt w Uinty i raczej bardzo dużo rzeczy bym teraz poprawił, zmienił
+lub inaczej zaprojektował, ale dzięki pracy przy tym projekcie na pewno nauczyłem się sporej ilości rzeczy 
+na temat zasady działania kodu w unity i samego programu.
 
 
 
