@@ -43,7 +43,7 @@ private void WorldObstaclePlacement()
 }
 ```
 
-### HUB
+## HUB
 Gracz zaczyna zawsze w miejscu położenia głównego huba
 
 ![](GitImage/HubImage.PNG)
