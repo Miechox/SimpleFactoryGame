@@ -24,23 +24,23 @@ wstawiane na mape w załeżności od wartości koloru miedzy
 0f a 1f który jest wyciągany
 z wcześniej wygenerowanej textury perlin noisa
 ```csharp
- private void WorldObstaclePlacement()
+private void WorldObstaclePlacement()
+{
+    for (int x = 0; x < 100; x++)
     {
-        for (int x = 0; x < 100; x++)
+        for (int y = 0; y < 100; y++)
         {
-            for (int y = 0; y < 100; y++)
-            {
-                float perlVal = heightMap.texture.GetPixel(x, y).grayscale;
+            float perlVal = heightMap.texture.GetPixel(x, y).grayscale;
 
-                if (perlVal > 0 && perlVal < 0.33f)
-                    LocationForObj(TreePrefab, x, y,true);
-                else if (perlVal > 0.47 && perlVal < 0.48)
-                    LocationForObj(GasePrefab, x, y,false);
-                else if (perlVal > 0.78 && perlVal < 0.80)
-                    LocationForObj(GoldPrefab, x, y,false);
-            }
+            if (perlVal > 0 && perlVal < 0.33f)
+                LocationForObj(TreePrefab, x, y, true);
+            else if (perlVal > 0.47 && perlVal < 0.48)
+                LocationForObj(GasePrefab, x, y, false);
+            else if (perlVal > 0.78 && perlVal < 0.80)
+                LocationForObj(GoldPrefab, x, y, false);
         }
     }
+}
 ```
 
 ## Inputy Gracza
