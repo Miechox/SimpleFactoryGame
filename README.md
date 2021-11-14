@@ -7,6 +7,7 @@ rzeczy w kodzie.
 Cala mapa jest generowana na bazie Perlin noisa który jest tworzony na nowo
 za każdym kolejnym właczeniem gry.
 
+![](
 
 
 System gridu do którego się przyczepiają obiekty na mapie jest tworzony
