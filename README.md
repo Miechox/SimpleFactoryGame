@@ -48,7 +48,7 @@ Gracz zaczyna zawsze w miejscu położenia głównego huba
 
 ![](GitImage/HubImage.PNG)
 
-Głównie dzieki głównemu hubowi można dostać sie do głownego UI
+Głównie dzieki głównemu hubowi można dostać sie do UI
 budowy budynków gdzie w zależności od ilości golda można wybrać jakąś budowlę
 
 ![](GitImage/HubImageV2.PNG)
