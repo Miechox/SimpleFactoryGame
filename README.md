@@ -64,7 +64,10 @@ private void HoldObjOnMouse(GameObject obj)
 }
 ```
 Jak widać w kodzie powyżej jeżeli gracz zdecyduję się postawić obiekt
-sprawdzamy czy ten punkt jest pusty do czego potrzbujemy informajci wejścowych
+sprawdzamy czy ten punkt jest pusty do czego potrzbujemy informajci wejścowych.
+Wykorzysuje je poniższa funkcja która sprawdza jaki obiekt jest trzymany
+i odpowiednio do tego wykonuję dane czynności zaczynające się gdy obiekt jest
+kładzony
 
 ```csharp
 private void SetPointToStay(GameObject heldObject, Vector3 planePosition);
