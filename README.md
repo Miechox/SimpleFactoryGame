@@ -43,6 +43,15 @@ private void WorldObstaclePlacement()
 }
 ```
 
+### HUB
+Gracz zaczyna zawsze w miejscu położenia głównego huba
+
+![](GitImage/HubImage.PNG)
+
+Głównie dzieki głównemu hubowi można dostać sie do głownego UI
+budowy budynków gdzie w zależności od ilości golda można wybrać jakąś budowlę
+![](GitImage/HubImageV2.PNG)
+
 ## Inputy Gracza
 
 Żeby gracz miał wizualizacje tego gdzie stawia obiekt
