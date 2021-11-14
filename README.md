@@ -8,6 +8,7 @@ Cala mapa jest generowana na bazie Perlin noisa który jest tworzony na nowo
 za każdym kolejnym właczeniem gry.
 
 ![](GitImage/MapGenIMage.PNG)
+![](GitImage/MapGenIMageV3.PNG)
 
 
 System gridu do którego się przyczepiają obiekty na mapie jest tworzony
