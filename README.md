@@ -104,7 +104,7 @@ public void SpawnMineInWorld()
 ```
 ## Podsumowanie 
 Jest to mój pierwszy "większy" projekt w Uinty i raczej bardzo dużo rzeczy bym teraz poprawił, zmienił
-lub inaczej zaprojektował, ale dzięki pracy przy tym projekcie na pewno nauczyłem się sporej ilości rzeczy 
+lub inaczej zaprojektował, ale dzięki pracy przy tym projekcie na pewno nauczyłem się sporo
 na temat zasady działania kodu w unity i samego programu.
 
 
