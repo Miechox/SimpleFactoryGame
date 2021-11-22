@@ -1,28 +1,29 @@
 # Factory Game
-## Projekt jest prototypem factory buildera
-Aktualnym i jedynym celem jest ulepszanie prędkości zbierania surowców
-ale aby projekt można było ciekawiej rozbudować warto byłoby zmienić parę
-rzeczy w kodzie.
-## Mapa
-Cala mapa jest generowana na bazie Perlin noisa który jest tworzony na nowo
-za każdym kolejnym włączeniem gry.
+## Project is a prototype of factory builder game
+The current and only goal is to improve the speed of gathering resources
+but for the project to be more interesting to expand, it would be worth changing 
+some stuff in code.
+
+## Map
+The entire map is generated from the perlin noise which is recreated
+each time the game is restarted.
 
 ![](GitImage/MapGenIMage.PNG)
 ![](GitImage/MapGenIMageV3.PNG)
 
+The grid system to which the objects on the map stick is created
+with regular planes that have their own scripts.
+It is currently a very limited grid system since
+the map can only be the size
+100 x 100 otherwise the code will not be
+useful.
 
-System gridu do którego się przyczepiają obiekty na mapie jest tworzony
-za pomocą zwykłych plane'ów które maja swoje własne skrypty.
-Aktualnie jest to bardzo ograniczony grid system ponieważ
-mapa może mieć tylko wielkość 
-100 x 100 inaczej kod nie będzie
-użyteczny.
 
+And this is what all the basic objects like trees and two kinds of resources are
+inserted on the map depending on the color value between
+0f and 1f which is pulled out
+from the previously generated perlin noisa texture
 
-I właśnie wszystkie podstawowe obiekty takie jak drzewa i dwa rodzaje surowców są
-wstawiane na mapę w zależności od wartości koloru miedzy 
-0f a 1f który jest wyciągany
-z wcześniej wygenerowanej textury perlin noisa
 ```csharp
 private void WorldObstaclePlacement()
 {
@@ -44,19 +45,19 @@ private void WorldObstaclePlacement()
 ```
 
 ## HUB
-Gracz zaczyna zawsze w miejscu położenia głównego huba
+The player always starts at the location of the main hub
 
 ![](GitImage/HubImage.PNG)
 
-Głównie dzieki głównemu hubowi można dostać sie do UI
-budowy budynków gdzie w zależności od ilości golda można wybrać jakąś budowlę
+Mainly through the main hub you can get to the UI
+construction of buildings where, depending on the amount of gold, you can choose a building
 
 ![](GitImage/HubImageV2.PNG)
 
-## Inputy Gracza
+## Player Inputs
 
-Żeby gracz miał wizualizacje tego gdzie stawia obiekt
-pod lokacją jego kursora jest snapowany 
+That the player has a visualization of where he places the object
+under its cursor location this specific object is snapped.
 
 ```csharp
 private void HoldObjOnMouse(GameObject obj)
@@ -75,21 +76,22 @@ private void HoldObjOnMouse(GameObject obj)
     }
 }
 ```
-Jak widać w kodzie powyżej jeżeli gracz zdecyduję się postawić obiekt
-sprawdzamy czy ten punkt jest pusty do czego potrzebujemy informacji wejściowych.
-Wykorzystuje je poniższa funkcja która sprawdza jaki obiekt jest trzymany
-i odpowiednio do tego wykonuję dane czynności zaczynające się gdy obiekt jest
-kładziony.
+As you can see in the code above, if the player decides to place the object
+we check if this point is empty for what we need input information.
+The following function uses them to check what object is being held
+and accordingly, perform the given actions that start when the object is
+placed.
 
 ```csharp
 private void SetPointToStay(GameObject heldObject, Vector3 planePosition);
 ```
 
-Gracz zanim będzie stawiać obiekt musi wybrać jaki chce
-postawić a robi to poprzez guziki w UI do których 
-są przypięte funkcje tego typu. W każdej takiej 
-funkcji program sprawdza ile gracz ma danej waluty
-i czy już czegoś nie "trzyma".
+Before placing an object, the player must choose what he wants
+to put and he does it by buttons in the UI to which
+there are pinned functions that can spawn chosen building. In every such
+function, the program checks how much a player has of a given currency
+and whether he is not "holding" something anymore.
+
 
 ```csharp
 public void SpawnMineInWorld()
@@ -102,10 +104,10 @@ public void SpawnMineInWorld()
     }
 }
 ```
-## Podsumowanie 
-Jest to mój pierwszy "większy" projekt w Uinty i raczej bardzo dużo rzeczy bym teraz poprawił, zmienił
-lub inaczej zaprojektował, ale dzięki pracy przy tym projekcie na pewno nauczyłem się sporo
-na temat zasady działania kodu w unity i samego programu.
+## Summary
+This is my first "bigger" project in Uinty and I would rather amend and change a lot of things now
+or designed it differently, but from working on this project, I have definitely learned a lot
+on how the code works in unity and the program itself.
 
 
 
