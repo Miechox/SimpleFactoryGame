@@ -104,10 +104,7 @@ public void SpawnMineInWorld()
     }
 }
 ```
-## Summary
-This is my first "bigger" project in Uinty and I would rather amend and change a lot of things now
-or designed it differently, but from working on this project, I have definitely learned a lot
-on how the code works in unity and the program itself.
+
 
 
 
